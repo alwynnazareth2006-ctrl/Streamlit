@@ -4,6 +4,6 @@ langchain-community
 langchain-core
 langchain-text-splitters
 langchain-groq
-pypdf
+PyPDF
 faiss-cpu
 sentence-transformers
