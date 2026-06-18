@@ -20,21 +20,12 @@ if "chat_history" not in st.session_state:
 
 # ── Sidebar: setup ──────────────────────────────────────────────────
 with st.sidebar:
-    st.header("⚙️ Setup")
-    
-    # Keep the essential stuff visible
+    st.header("Setup")
     groq_api_key = st.text_input("Groq API Key", type="password").strip()
     uploaded_files = st.file_uploader("Upload PDF(s)", type="pdf", accept_multiple_files=True)
-    
-    # Hide the technical settings in an accordion/expander
-    with st.expander("🛠️ Advanced Settings"):
-        chunk_size = st.selectbox("Chunk size", [500, 1000, 1500], index=1)
-        k = st.selectbox("Chunks to retrieve (k)", [3, 5, 8], index=1)
-        
-    st.divider() # Adds a clean visual break
-    
-    # Make the button span the full width of the sidebar
-    build_btn = st.button("Build Knowledge Base", use_container_width=True)
+    chunk_size = st.selectbox("Chunk size", [500, 1000, 1500], index=1)
+    k = st.selectbox("Chunks to retrieve (k)", [3, 5, 8], index=1)
+    build_btn = st.button("Build Knowledge Base")
 
 # ── Build ONE Master Chain on button click ──────────────────────────
 if build_btn:
@@ -111,4 +102,3 @@ if st.session_state.chain:
 
 else:
     st.info("👈 Upload PDFs and click **Build Knowledge Base** to get started.")
-
